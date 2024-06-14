@@ -13,14 +13,20 @@ while True:
         nombre_apellido=input("Ingrese nombre y apellido: ")
         cargo=int(input("Ingrese el cargo (1. CEO, 2. Desarrollador, 3. Analista): "))
         sueldo_bruto=int(input("Ingrese sueldo bruto: "))
-        descuento_salud=0.07*sueldo_bruto
-        descuento_afp=0.12*sueldo_bruto
+        descuento_salud=int(0.07*sueldo_bruto)
+        descuento_afp=int(0.12*sueldo_bruto)
         sueldo_liquido=sueldo_bruto-descuento_salud-descuento_afp
         trabajador=[nombre_apellido, cargo, sueldo_bruto, descuento_salud, descuento_afp, sueldo_liquido]
         trabajadores.append(trabajador)
         print("TRABAJADOR REGISTRADO CON ÉXITO!")
     elif opc==1:
-        pass
+        if len(trabajadores)==0:
+            print("No existen trabajadores, elija la opción 1")
+        else:
+            print("\tLISTA DE TRABAJADORES:")
+            print("Tabajador\tCargo\tSueldo bruto\tDesc. Salud\tDesc. AFP\tLíquido a pagar")
+            for t in trabajadores: #t es cada trabajador de la lista, t es una lista
+                print(f"{t[0]}\t{t[1]}\t{t[2]}\t\t\t{t[3]}\t{t[4]}\t\t{t[5]}")
     elif opc==2:
         pass
     else:
