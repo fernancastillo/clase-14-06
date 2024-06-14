@@ -1,4 +1,5 @@
 trabajadores=[]
+cargos=("CEO","DESARROLLADOR","ANALISTA")
 def opcion_1():
     print("REGISTRAR TRABAJADOR")
     nombre_apellido=input("Ingrese nombre y apellido: ")
@@ -7,7 +8,7 @@ def opcion_1():
     descuento_salud=int(0.07*sueldo_bruto)
     descuento_afp=int(0.12*sueldo_bruto)
     sueldo_liquido=sueldo_bruto-descuento_salud-descuento_afp
-    trabajador=[nombre_apellido, cargo, sueldo_bruto, descuento_salud, descuento_afp, sueldo_liquido]
+    trabajador=[nombre_apellido, cargos[cargo-1], sueldo_bruto, descuento_salud, descuento_afp, sueldo_liquido]
     trabajadores.append(trabajador)
     print("TRABAJADOR REGISTRADO CON ÉXITO!")
 def opcion_2():
@@ -23,13 +24,13 @@ def opcion_3():
     if opc2==4:
         with open ("todos_trabajadores.txt", "w", newline="\n") as archivo:
             for t in trabajadores:
-                texto=f"{t[0]} {t[1]} {t[2]} {t[3]} {t[4]} {t[5]}"
+                texto=f"NOMBRE: {t[0]}\nCARGO: {t[1]}\nBRUTO: {t[2]}\nDESCTO SALUD: {t[3]}\nDESCTO AFP: {t[4]}\nLÍQUIDO: {t[5]}\n\n"
                 archivo.write(texto)
     else:
         with open ("trabajadores_por_cargo.txt","w") as archivo:
             for t in trabajadores:
-                if opc2==t[1]:
-                    texto=f"{t[0]} {t[1]} {t[2]} {t[3]} {t[4]} {t[5]}"
+                if cargos[opc2-1]==t[1]:
+                    texto=f"NOMBRE: {t[0]}\nCARGO: {t[1]}\nBRUTO: {t[2]}\nDESCTO SALUD: {t[3]}\nDESCTO AFP: {t[4]}\nLÍQUIDO: {t[5]}\n\n"
                     archivo.write(texto)
     print("Archivo creado con éxito!")
 def opcion_4():
